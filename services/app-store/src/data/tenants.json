@@ -1,0 +1,10 @@
+[
+    {
+        "id": "tenant-1",
+        "name": "Toucan"
+    },
+    {
+        "id": "tenant-2",
+        "name": "ACME"
+    }
+]

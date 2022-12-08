@@ -1,0 +1,12 @@
+[
+    {
+        "id": "app-1",
+        "name": "Moon",
+        "tenantId": "tenant-2"
+    },
+    {
+        "id": "app-2",
+        "name": "Sun",
+        "tenantId": "tenant-2"
+    }
+]

@@ -1,0 +1,16 @@
+type Tenant {
+  id: ID!
+}
+
+type App {
+  id: ID!
+  name: String!
+  url: String!
+  tenant: Tenant
+}
+
+# Lists all of the available queries that clients can execute
+type Query {
+  app(id: ID!): App
+  appsForTenant(tenantId: ID!): [App]
+}
