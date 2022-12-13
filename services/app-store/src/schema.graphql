@@ -14,6 +14,6 @@ type App {
 # Lists all of the available queries that clients can execute
 type Query {
   app(id: ID!): App
-  appsForTenant(tenantId: ID!): [App]
+  appsForTenant(tenantId: ID!): [App!]!
   tenant(id: ID!): Tenant
 }

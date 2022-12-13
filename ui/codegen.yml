@@ -1,0 +1,8 @@
+schema: http://localhost:4000
+documents: ['src/**/*.tsx']
+emitLegacyCommonJSImports: false
+generates:
+  "src/generated/":
+    preset: 'client'
+    presetConfig:
+      gqlTagName: gql

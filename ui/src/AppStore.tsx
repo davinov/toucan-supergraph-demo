@@ -1,6 +1,7 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { gql } from './generated/gql';
 
-const LIST_APPS = gql`
+const LIST_APPS = gql(`
   query ListApps($tenantId: ID!) {
     appsForTenant(tenantId: $tenantId) {
       url
@@ -8,7 +9,7 @@ const LIST_APPS = gql`
       id
     }
   }
-`;
+`);
 
 export function AppStore() {
   const { loading, error, data } = useQuery(LIST_APPS, {
@@ -24,8 +25,8 @@ export function AppStore() {
         <>Oh no! An error occurred</>
       ) : (
         <ul>
-          {data.appsForTenant.map(
-            (d: { id: string; name: string; url: string }) => (
+          {data && data.appsForTenant.map(
+            (d) => (
               <li key={d.id}>
                 <a href={d.url}>{d.name}</a>
               </li>

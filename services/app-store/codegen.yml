@@ -1,5 +1,5 @@
 schema: "src/schema.graphql"
-emitLegacyCommonJSImports: false,
+emitLegacyCommonJSImports: false
 generates:
   "src/generated/graphql.ts":
     config:
