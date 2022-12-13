@@ -1,26 +1,28 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from "fs";
 
-import { ApolloServer } from '@apollo/server';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
 
-import type {
-  Tenant,
-  Resolvers,
-} from './generated/graphql.js';
+import type { Resolvers } from "./generated/graphql.js";
 
-import { AppsDataSource, TenantsDataSource } from './data-sources.js';
-import type { AppDocument, TenantDocument } from './data-sources.js';
+import {
+  AppsDataSource,
+  DatasetsDataSource,
+  TenantsDataSource,
+} from "./data-sources.js";
+import type { AppDocument, TenantDocument } from "./data-sources.js";
 
-const typeDefs = readFileSync('./src/schema.graphql', { encoding: 'utf-8' });
+const typeDefs = readFileSync("./src/schema.graphql", { encoding: "utf-8" });
 
 export interface ApolloServerContext {
   dataSources: {
     apps: AppsDataSource;
+    datasets: DatasetsDataSource;
     tenants: TenantsDataSource;
   };
 }
 
-const resolvers: Resolvers = {
+const resolvers: Resolvers<ApolloServerContext> = {
   Query: {
     app: (_, { id }, { dataSources }): AppDocument => {
       return dataSources.apps.getById(id);
@@ -33,13 +35,21 @@ const resolvers: Resolvers = {
     },
   },
   App: {
-    tenant({ tenantId }: AppDocument, _, { dataSources }): Partial<Tenant> {
+    tenant({ tenantId }, _, { dataSources }) {
       return dataSources.tenants.getById(tenantId);
+    },
+    datasets({ id }, _, { dataSources }) {
+      return dataSources.datasets.listForAppId(id);
     },
   },
   Tenant: {
-    apps({ id: tenantId }: Tenant, _, { dataSources }) {
+    apps({ id: tenantId }, _, { dataSources }) {
       return dataSources.apps.getByTenantId(tenantId);
+    },
+  },
+  Visualization: {
+    type({ type }) {
+      return type;
     },
   },
 };
@@ -54,9 +64,10 @@ const { url } = await startStandaloneServer(server, {
   context: async () => ({
     dataSources: {
       apps: new AppsDataSource(),
+      datasets: new DatasetsDataSource(),
       tenants: new TenantsDataSource(),
-    }
-  })
+    },
+  }),
 });
 
 console.log(`🚀  App-store server ready at: ${url}`);

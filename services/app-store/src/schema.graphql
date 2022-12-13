@@ -9,6 +9,27 @@ type App {
   name: String!
   url: String!
   tenant: Tenant!
+  visualizations: [Visualization!]!
+  datasets: [Dataset!]!
+}
+
+type Dataset {
+  id: ID!
+  name: String!
+  query: String!
+}
+
+type Visualization {
+  id: ID!
+  title: String!
+  type: VisualizationType!
+  dataset: Dataset!
+}
+
+enum VisualizationType {
+  BARCHART
+  LINECHART
+  TABLE
 }
 
 # Lists all of the available queries that clients can execute

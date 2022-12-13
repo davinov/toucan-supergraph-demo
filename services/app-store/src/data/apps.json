@@ -3,12 +3,19 @@
         "id": "app-1",
         "name": "Moon",
         "url": "/moon",
+        "visualizations": [{
+            "id": "viz-moon-1",
+            "title": "Moon phases",
+            "type": "TABLE",
+            "datasetId": "dataset-1"
+        }],
         "tenantId": "tenant-2"
     },
     {
         "id": "app-2",
         "name": "Sun",
         "url": "/sun",
+        "visualizations": [],
         "tenantId": "tenant-2"
     }
 ]
