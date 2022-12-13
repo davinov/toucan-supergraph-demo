@@ -1,14 +1,27 @@
-import { ApolloProvider } from '@apollo/client'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { client } from './api'
-import { AppStore } from './AppStore'
-import './index.css'
+import { ApolloProvider } from "@apollo/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { client } from "./api";
+import { App } from "./App";
+import { AppStore } from "./AppStore";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppStore />,
+  },
+  {
+    path: "app/:appUrl",
+    element: <App />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <AppStore />
+      <RouterProvider router={router} />
     </ApolloProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

@@ -2,7 +2,7 @@
     {
         "id": "app-1",
         "name": "Moon",
-        "url": "/moon",
+        "url": "moon",
         "visualizations": [{
             "id": "viz-moon-1",
             "title": "Moon phases",
@@ -14,7 +14,7 @@
     {
         "id": "app-2",
         "name": "Sun",
-        "url": "/sun",
+        "url": "sun",
         "visualizations": [],
         "tenantId": "tenant-2"
     }

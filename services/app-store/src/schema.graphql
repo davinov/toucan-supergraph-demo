@@ -35,6 +35,7 @@ enum VisualizationType {
 # Lists all of the available queries that clients can execute
 type Query {
   app(id: ID!): App
+  appByURL(url: String!): App
   appsForTenant(tenantId: ID!): [App!]!
   tenant(id: ID!): Tenant
 }

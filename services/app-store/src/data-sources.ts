@@ -40,6 +40,10 @@ export class AppsDataSource {
     return APPS.find((a) => a.id === id);
   }
 
+  getByURL(url: string): AppDocument | undefined {
+    return APPS.find((a) => a.url === url);
+  }
+
   getByTenantId(tenantId: string): AppDocument[] {
     return APPS.filter((a) => a.tenantId === tenantId);
   }

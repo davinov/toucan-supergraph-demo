@@ -27,6 +27,9 @@ const resolvers: Resolvers<ApolloServerContext> = {
     app: (_, { id }, { dataSources }): AppDocument => {
       return dataSources.apps.getById(id);
     },
+    appByURL: (_, { url }, { dataSources }) => {
+      return dataSources.apps.getByURL(url);
+    },
     appsForTenant: (_, { tenantId }, { dataSources }) => {
       return dataSources.apps.getByTenantId(tenantId);
     },
