@@ -6,7 +6,7 @@ type App {
   id: ID!
   name: String!
   url: String!
-  tenant: Tenant
+  tenant: Tenant!
 }
 
 # Lists all of the available queries that clients can execute

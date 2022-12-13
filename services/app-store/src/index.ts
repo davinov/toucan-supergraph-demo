@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs';
-import { dirname, join } from 'path';
 
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
