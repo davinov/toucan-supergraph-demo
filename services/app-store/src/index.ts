@@ -34,10 +34,15 @@ const resolvers: Resolvers = {
     },
   },
   App: {
-    tenant({ tenantId }: AppDocument): Tenant {
+    tenant({ tenantId }: AppDocument): Partial<Tenant> {
       return tenants.find((t) => t.id === tenantId);
     },
   },
+  Tenant: {
+    apps({ id }: Tenant) {
+      return apps.filter((a) => a.tenantId == id);
+    }
+  }
 };
 
 const server = new ApolloServer({

@@ -1,5 +1,7 @@
 type Tenant {
   id: ID!
+  name: String
+  apps: [App!]!
 }
 
 type App {
