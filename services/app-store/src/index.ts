@@ -29,6 +29,9 @@ const resolvers: Resolvers = {
       return apps
         .filter((a) => a.tenantId == tenantId);
     },
+    tenant: (_, { id }) => {
+      return tenants.find((t) => t.id === id);
+    },
   },
   App: {
     tenant({ tenantId }: AppDocument): Tenant {

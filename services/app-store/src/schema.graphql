@@ -13,4 +13,5 @@ type App {
 type Query {
   app(id: ID!): App
   appsForTenant(tenantId: ID!): [App]
+  tenant(id: ID!): Tenant
 }
