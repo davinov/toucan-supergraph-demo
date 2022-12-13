@@ -6,6 +6,7 @@ generates:
       useIndexSignature: true
       useTypeImports: true
       defaultMapper: Partial<{T}>
+      contextType: "./index#ApolloServerContext"
     plugins:
     - "typescript"
     - "typescript-resolvers"
