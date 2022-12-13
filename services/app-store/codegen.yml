@@ -1,0 +1,11 @@
+schema: "src/schema.graphql"
+emitLegacyCommonJSImports: false,
+generates:
+  "src/generated/graphql.ts":
+    config:
+      useIndexSignature: true
+      useTypeImports: true
+      defaultMapper: Partial<{T}>
+    plugins:
+    - "typescript"
+    - "typescript-resolvers"
