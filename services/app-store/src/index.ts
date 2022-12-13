@@ -51,6 +51,9 @@ const resolvers: Resolvers<ApolloServerContext> = {
     type({ type }) {
       return type;
     },
+    dataset({ datasetId }, _, { dataSources }) {
+      return dataSources.datasets.getById(datasetId);
+    }
   },
 };
 

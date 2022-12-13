@@ -36,7 +36,7 @@ export class AppsDataSource {
     return APPS;
   }
 
-  getById(id: string): AppDocument {
+  getById(id: string): AppDocument | undefined {
     return APPS.find((a) => a.id === id);
   }
 
@@ -49,6 +49,10 @@ export class DatasetsDataSource {
   listForAppId(appId): DatasetDocument[] {
     return DATASETS.filter((d) => d.appId === appId);
   }
+
+  getById(id: string): DatasetDocument | undefined {
+    return DATASETS.find((d) => d.id === id);
+  }
 }
 
 export class TenantsDataSource {
@@ -56,7 +60,7 @@ export class TenantsDataSource {
     return TENANTS;
   }
 
-  getById(id: string): TenantDocument {
+  getById(id: string): TenantDocument | undefined {
     return TENANTS.find((t) => t.id === id);
   }
 }

@@ -1,0 +1,8 @@
+[
+    {
+        "appId": "app-1",
+        "id": "dataset-1",
+        "name": "Data for moon phases",
+        "query": "SELECT PHASES FROM MOON;"
+    }
+]
