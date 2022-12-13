@@ -6,6 +6,7 @@ import { client } from "./api";
 import { App } from "./App";
 import { AppStore } from "./AppStore";
 import "./index.css";
+import { Visualization } from "./Visualization";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,12 @@ const router = createBrowserRouter([
   {
     path: "app/:appUrl",
     element: <App />,
+    children: [
+      {
+        path: "visualization/:visualizationId",
+        element: <Visualization />,
+      },
+    ],
   },
 ]);
 

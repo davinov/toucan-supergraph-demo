@@ -38,4 +38,5 @@ type Query {
   appByURL(url: String!): App
   appsForTenant(tenantId: ID!): [App!]!
   tenant(id: ID!): Tenant
+  visualization(appUrl: String!, visualizationId: ID!): Visualization
 }

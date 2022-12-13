@@ -36,6 +36,9 @@ const resolvers: Resolvers<ApolloServerContext> = {
     tenant: (_, { id }, { dataSources }) => {
       return dataSources.tenants.getById(id);
     },
+    visualization: (_, { appUrl, visualizationId }, { dataSources }) => {
+      return dataSources.apps.getByURL(appUrl).visualizations.find((v) => v.id === visualizationId)
+    },
   },
   App: {
     tenant({ tenantId }, _, { dataSources }) {
@@ -56,7 +59,7 @@ const resolvers: Resolvers<ApolloServerContext> = {
     },
     dataset({ datasetId }, _, { dataSources }) {
       return dataSources.datasets.getById(datasetId);
-    }
+    },
   },
 };
 
