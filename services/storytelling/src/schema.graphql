@@ -3,13 +3,10 @@ extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@
 type App @key(fields: "id") {
   id: ID!
   visualizations: [Visualization!]!
-  datasets: [Dataset!]!
 }
 
-type Dataset {
+type Dataset @key(fields: "id") {
   id: ID!
-  name: String!
-  query: String!
 }
 
 type Visualization {

@@ -1,0 +1,15 @@
+type App @key(fields: "id") {
+  id: ID!
+  datasets: [Dataset!]!
+}
+
+type Dataset @key(fields: "id") {
+  id: ID!
+  name: String!
+  query: String!
+}
+
+type Query {
+  hello: String!
+  appDatasets(appId: ID!): [Dataset!]!
+}
