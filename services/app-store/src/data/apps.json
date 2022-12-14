@@ -8,6 +8,11 @@
             "title": "Moon phases",
             "type": "TABLE",
             "datasetId": "dataset-1"
+        },{
+            "id": "viz-moon-2",
+            "title": "Moon tides",
+            "type": "BARCHART",
+            "datasetId": "dataset-2"
         }],
         "tenantId": "tenant-2"
     },
