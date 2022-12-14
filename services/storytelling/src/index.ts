@@ -31,6 +31,12 @@ const resolvers: Resolvers<ApolloServerContext> = {
     },
   },
   App: {
+    __resolveReference({ id }, { dataSources }) {
+      return dataSources.apps.getById(id);
+    },
+    visualizations({ visualizations }) {
+      return visualizations;
+    },
     datasets({ id }, _, { dataSources }) {
       return dataSources.datasets.listForAppId(id);
     },
@@ -62,4 +68,4 @@ const { url } = await startStandaloneServer(server, {
   }),
 });
 
-console.log(`🚀  App-store server ready at: ${url}`);
+console.log(`🚀  Storytelling service ready at: ${url}`);
