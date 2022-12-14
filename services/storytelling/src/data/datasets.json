@@ -1,0 +1,14 @@
+[
+    {
+        "appId": "app-1",
+        "id": "dataset-1",
+        "name": "Data for moon phases",
+        "query": "SELECT PHASES FROM MOON;"
+    },
+    {
+        "appId": "app-1",
+        "id": "dataset-2",
+        "name": "Data for moon tides",
+        "query": "SELECT date, place, intensity, corresponding_phase, moon_earth_distance FROM MOON_TIDES;"
+    }
+]

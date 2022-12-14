@@ -1,0 +1,42 @@
+type Tenant {
+  id: ID!
+  name: String
+  apps: [App!]!
+}
+
+type App {
+  id: ID!
+  name: String!
+  url: String!
+  tenant: Tenant!
+  visualizations: [Visualization!]!
+  datasets: [Dataset!]!
+}
+
+type Dataset {
+  id: ID!
+  name: String!
+  query: String!
+}
+
+type Visualization {
+  id: ID!
+  title: String!
+  type: VisualizationType!
+  dataset: Dataset!
+}
+
+enum VisualizationType {
+  BARCHART
+  LINECHART
+  TABLE
+}
+
+# Lists all of the available queries that clients can execute
+type Query {
+  app(id: ID!): App
+  appByURL(url: String!): App
+  appsForTenant(tenantId: ID!): [App!]!
+  tenant(id: ID!): Tenant
+  visualization(appUrl: String!, visualizationId: ID!): Visualization
+}

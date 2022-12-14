@@ -1,0 +1,26 @@
+[
+    {
+        "id": "app-1",
+        "name": "Moon",
+        "stories": [{
+            "id": "story-1",
+            "dataset": "dataset-1",
+            "viz": {
+                "type": "Table"
+            }
+        },{
+            "id": "story-2",
+            "dataset": "dataset-2",
+            "viz": {
+                "type": "BarChart",
+                "labelsColumn": "label",
+                "valuesColumn": "value"
+            }
+        }]
+    },
+    {
+        "id": "app-2",
+        "name": "Sun",
+        "stories": []
+    }
+]
