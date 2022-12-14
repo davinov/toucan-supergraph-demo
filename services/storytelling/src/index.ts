@@ -9,7 +9,6 @@ import type { Resolvers } from "./generated/graphql.js";
 
 import {
   AppsDataSource,
-  DatasetsDataSource,
 } from "./data-sources.js";
 
 const typeDefs = gql(
@@ -19,7 +18,6 @@ const typeDefs = gql(
 export interface ApolloServerContext {
   dataSources: {
     apps: AppsDataSource;
-    datasets: DatasetsDataSource;
   };
 }
 
@@ -45,8 +43,10 @@ const resolvers: Resolvers<ApolloServerContext> = {
     type({ type }) {
       return type;
     },
-    dataset({ datasetId }, _, { dataSources }) {
-      return dataSources.datasets.getById(datasetId);
+    dataset({ datasetId }) {
+      return {
+        id: datasetId
+      };
     },
   },
 };
@@ -63,7 +63,6 @@ const { url } = await startStandaloneServer(server, {
   context: async () => ({
     dataSources: {
       apps: new AppsDataSource(),
-      datasets: new DatasetsDataSource(),
     },
   }),
 });

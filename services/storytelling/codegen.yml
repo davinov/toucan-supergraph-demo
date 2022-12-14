@@ -10,7 +10,6 @@ generates:
       federation: true
       mappers:
         App: ../data-sources.js#AppDocument
-        Dataset: ../data-sources.js#DatasetDocument
         Visualization: ../data-sources.js#VisualizationDocument
     plugins:
     - "typescript"
