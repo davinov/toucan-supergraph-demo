@@ -38,7 +38,7 @@ export function Visualization() {
 
   return (
     <>
-      <h2>{visualization.title}</h2>
+      <h2>{ visualization.title }</h2>
       <p>{ visualization.type } of { visualization.dataset.name }</p>
     </>
   );

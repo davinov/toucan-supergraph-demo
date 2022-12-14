@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router";
-import { Outlet } from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import { gql } from "./generated/gql";
 
 const APP_DETAILS = gql(`
@@ -40,9 +40,13 @@ export function App() {
     <>
       <h1>{app.name}</h1>
       <ul>
-        {app.visualizations.map((v) => (
-          <li key={v.id}>{v.title}</li>
-        ))}
+        { app.visualizations.map((v) => (
+          <li key={ v.id }>
+            <Link to={ `visualization/${v.id}` }>
+              { v.title }
+            </Link>
+          </li>
+        )) }
       </ul>
       <Outlet />
     </>
