@@ -1,4 +1,5 @@
 federation_version: 2
+
 subgraphs:
   app-store:
     routing_url: http://localhost:4001

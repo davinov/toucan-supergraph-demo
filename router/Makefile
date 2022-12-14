@@ -11,4 +11,4 @@ build-supergraph-schema:
 
 # Start the router for the generated supergraph
 run-router:
-	./router --supergraph supergraph.graphql --dev
+	./router --supergraph supergraph.graphql --config ./router-config.yaml --dev
