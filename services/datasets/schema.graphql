@@ -11,4 +11,5 @@ type Dataset @key(fields: "id") {
 
 type Query {
   appDatasets(appId: ID!): [Dataset!]!
+  dataset(id: ID!): Dataset
 }
