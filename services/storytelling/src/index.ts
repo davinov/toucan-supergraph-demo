@@ -2,6 +2,8 @@ import { readFileSync } from "fs";
 
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { buildSubgraphSchema } from "@apollo/subgraph";
+import { gql } from 'graphql-tag';
 
 import type { Resolvers } from "./generated/graphql.js";
 
@@ -9,9 +11,10 @@ import {
   AppsDataSource,
   DatasetsDataSource,
 } from "./data-sources.js";
-import type { AppDocument } from "./data-sources.js";
 
-const typeDefs = readFileSync("./src/schema.graphql", { encoding: "utf-8" });
+const typeDefs = gql(
+    readFileSync("./src/schema.graphql", { encoding: "utf-8" })
+);
 
 export interface ApolloServerContext {
   dataSources: {
@@ -23,7 +26,8 @@ export interface ApolloServerContext {
 const resolvers: Resolvers<ApolloServerContext> = {
   Query: {
     visualization: (_, { appUrl, visualizationId }, { dataSources }) => {
-      return dataSources.apps.getByURL(appUrl).visualizations.find((v) => v.id === visualizationId)
+      // return dataSources.apps.getByURL(appUrl).visualizations.find((v) => v.id === visualizationId)
+      throw new Error('To be fixed!')
     },
   },
   App: {
@@ -42,8 +46,10 @@ const resolvers: Resolvers<ApolloServerContext> = {
 };
 
 const server = new ApolloServer<ApolloServerContext>({
-  typeDefs,
-  resolvers,
+  schema: buildSubgraphSchema({
+    typeDefs,
+    resolvers,
+  }),
 });
 
 const { url } = await startStandaloneServer(server, {
