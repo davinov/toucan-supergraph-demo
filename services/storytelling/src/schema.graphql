@@ -1,4 +1,6 @@
-type App {
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
+type App @key(fields: "id") {
   id: ID!
   visualizations: [Visualization!]!
   datasets: [Dataset!]!
