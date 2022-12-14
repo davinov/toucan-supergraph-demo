@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "datasets"
+version = "0.1.0"
+description = ""
+authors = ["David Nowinsky <david@nowinsky.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ariadne = "^0.17.0"
+uvicorn = "^0.20.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
