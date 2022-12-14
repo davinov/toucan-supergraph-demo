@@ -7,9 +7,9 @@ generates:
       useTypeImports: true
       defaultMapper: Partial<{T}>
       enumsAsTypes: true
+      federation: true
       mappers:
         App: ../data-sources.js#AppDocument
-        Tenant: ../data-sources.js#TenantDocument
         Dataset: ../data-sources.js#DatasetDocument
         Visualization: ../data-sources.js#VisualizationDocument
     plugins:
