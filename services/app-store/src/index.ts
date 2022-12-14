@@ -7,7 +7,6 @@ import type { Resolvers } from "./generated/graphql.js";
 
 import {
   AppsDataSource,
-  DatasetsDataSource,
   TenantsDataSource,
 } from "./data-sources.js";
 import type { AppDocument, TenantDocument } from "./data-sources.js";
@@ -17,7 +16,6 @@ const typeDefs = readFileSync("./src/schema.graphql", { encoding: "utf-8" });
 export interface ApolloServerContext {
   dataSources: {
     apps: AppsDataSource;
-    datasets: DatasetsDataSource;
     tenants: TenantsDataSource;
   };
 }
@@ -36,29 +34,15 @@ const resolvers: Resolvers<ApolloServerContext> = {
     tenant: (_, { id }, { dataSources }) => {
       return dataSources.tenants.getById(id);
     },
-    visualization: (_, { appUrl, visualizationId }, { dataSources }) => {
-      return dataSources.apps.getByURL(appUrl).visualizations.find((v) => v.id === visualizationId)
-    },
   },
   App: {
     tenant({ tenantId }, _, { dataSources }) {
       return dataSources.tenants.getById(tenantId);
     },
-    datasets({ id }, _, { dataSources }) {
-      return dataSources.datasets.listForAppId(id);
-    },
   },
   Tenant: {
     apps({ id: tenantId }, _, { dataSources }) {
       return dataSources.apps.getByTenantId(tenantId);
-    },
-  },
-  Visualization: {
-    type({ type }) {
-      return type;
-    },
-    dataset({ datasetId }, _, { dataSources }) {
-      return dataSources.datasets.getById(datasetId);
     },
   },
 };
@@ -69,11 +53,10 @@ const server = new ApolloServer<ApolloServerContext>({
 });
 
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
+  listen: { port: 4001 },
   context: async () => ({
     dataSources: {
       apps: new AppsDataSource(),
-      datasets: new DatasetsDataSource(),
       tenants: new TenantsDataSource(),
     },
   }),

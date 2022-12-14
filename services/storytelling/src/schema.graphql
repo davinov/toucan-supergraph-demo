@@ -1,14 +1,5 @@
-type Tenant {
-  id: ID!
-  name: String
-  apps: [App!]!
-}
-
 type App {
   id: ID!
-  name: String!
-  url: String!
-  tenant: Tenant!
   visualizations: [Visualization!]!
   datasets: [Dataset!]!
 }
@@ -34,9 +25,5 @@ enum VisualizationType {
 
 # Lists all of the available queries that clients can execute
 type Query {
-  app(id: ID!): App
-  appByURL(url: String!): App
-  appsForTenant(tenantId: ID!): [App!]!
-  tenant(id: ID!): Tenant
   visualization(appUrl: String!, visualizationId: ID!): Visualization
 }

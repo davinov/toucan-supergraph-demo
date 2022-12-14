@@ -9,27 +9,6 @@ type App {
   name: String!
   url: String!
   tenant: Tenant!
-  visualizations: [Visualization!]! # -> storytelling
-  datasets: [Dataset!]! # -> storytelling
-}
-
-type Dataset { # -> storytelling
-  id: ID!
-  name: String!
-  query: String!
-}
-
-type Visualization { # -> storytelling
-  id: ID!
-  title: String!
-  type: VisualizationType!
-  dataset: Dataset!
-}
-
-enum VisualizationType { # -> storytelling
-  BARCHART
-  LINECHART
-  TABLE
 }
 
 # Lists all of the available queries that clients can execute
@@ -38,5 +17,4 @@ type Query {
   appByURL(url: String!): App
   appsForTenant(tenantId: ID!): [App!]!
   tenant(id: ID!): Tenant
-  visualization(appUrl: String!, visualizationId: ID!): Visualization # -> storytelling
 }

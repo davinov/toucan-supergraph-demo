@@ -1,26 +1,20 @@
 [
     {
         "id": "app-1",
-        "name": "Moon",
-        "stories": [{
-            "id": "story-1",
-            "dataset": "dataset-1",
-            "viz": {
-                "type": "Table"
-            }
+        "visualizations": [{
+            "id": "viz-moon-1",
+            "title": "Moon phases",
+            "type": "TABLE",
+            "datasetId": "dataset-1"
         },{
-            "id": "story-2",
-            "dataset": "dataset-2",
-            "viz": {
-                "type": "BarChart",
-                "labelsColumn": "label",
-                "valuesColumn": "value"
-            }
+            "id": "viz-moon-2",
+            "title": "Moon tides",
+            "type": "BARCHART",
+            "datasetId": "dataset-2"
         }]
     },
     {
         "id": "app-2",
-        "name": "Sun",
-        "stories": []
+        "visualizations": [],
     }
 ]

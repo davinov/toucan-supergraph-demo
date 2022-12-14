@@ -1,26 +1,10 @@
 import APPS_DATA from "./data/apps.json" assert { type: "json" };
-import DATASETS from "./data/datasets.json" assert { type: "json" };
 import TENANTS from "./data/tenants.json" assert { type: "json" };
-
-export interface VisualizationDocument {
-  id: string;
-  title: string;
-  type: "BARCHART" | "LINECHART" | "TABLE";
-  datasetId: string;
-}
-
-export interface DatasetDocument {
-  appId: string;
-  id: string;
-  name: string;
-  query: string;
-}
 
 export interface AppDocument {
   id: string;
   name: string;
   url: string;
-  visualizations: VisualizationDocument[];
   tenantId: string;
 }
 
@@ -46,16 +30,6 @@ export class AppsDataSource {
 
   getByTenantId(tenantId: string): AppDocument[] {
     return APPS.filter((a) => a.tenantId === tenantId);
-  }
-}
-
-export class DatasetsDataSource {
-  listForAppId(appId): DatasetDocument[] {
-    return DATASETS.filter((d) => d.appId === appId);
-  }
-
-  getById(id: string): DatasetDocument | undefined {
-    return DATASETS.find((d) => d.id === id);
   }
 }
 
